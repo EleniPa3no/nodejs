@@ -1,0 +1,125 @@
+<html>
+	<head> 
+		<title>Discover Dance</title>
+		<style type="text/css">
+			h1{	text-align:center;
+				font-family: Monotype Corsiva;
+			  }
+			
+			a#menu{	  font-size: 120%;
+				  font-family: Arial;
+				  font-weight: bold;
+				  background-color:#ffff99;
+				  align: center;
+				  border: 1px solid #e6e600;
+				  padding: 12px;
+				  text-decoration:none;
+				 }
+			a#menu:hover{ background-color: #ffbb99;
+						cursor:pointer;
+						text-decoration:none;
+					   }
+			div{font-family: Arial;
+				margin-left: 70px;
+				}
+			input[type=text]{width:400px;
+								height: 30px;
+							  }
+			.submit{width:310px;
+				text-align:right;
+			   }
+			input[type="submit"]{ border:1px solid #006633;
+							  background-color:#009966;
+							  color:#FFFFFF;
+							  border-radius:10px;
+							  margin-top: 10px;
+							  width: 90px;
+							  height: 50px;
+							  font-size: 100%;
+							}
+			input[type="submit"]:hover{ 
+									background-color:#ff4d4d;
+									cursor:painter;
+									}
+			textarea{width:400px;
+					 height: 150px;}
+		</style>
+	</head>
+	<nav class="navbar navbar-inverse" >
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>                        
+	      </button>
+	      <a href="2-aboutus.html"> <img src="https://s17.postimg.org/r398y0mj3/discover-dance.jpg" width="90" height="50"></a>
+	    </div>
+	    <div class="collapse navbar-collapse" id="myNavbar">
+	      <ul class="nav navbar-nav">
+	        <li class="active"><a href="1-Portfolio.html">Portfolio</a></li>
+	        <li><a href="2-aboutus.html">About Us</a></li>
+	        <li><a href="3-categories.html">Categories</a></li>
+	        <li><a href="4-Contact.php">Contact</a></li>
+	        <li><a href="5-Gallery.html">Gallery</a></li>
+	      </ul>
+	      <ul class="nav navbar-nav navbar-right">
+	        <li><a href="signup1.html" ><span class="glyphicon glyphicon-log-in"></span> Sign Up</a></li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+		
+		<div>
+		 <p style="font-size:300%; font-family: Arial; margin-left:100px;"> Contact us  </p>
+		 Where to find us <br> <br> <img src="harta.jpg "> <br> <br>
+		 Get in touch
+		 </div>
+		 
+		 <form  method="post" id="data">
+			<img align="right"  src="adresa.jpg" style="margin-right:250px;">
+			<h4> &nbsp;&nbsp;&nbsp; Fields marked with an <font color="red"> * </font> are required </h4> 
+			
+			<div>
+				<b> Name <font color="red"> * </font></b> <br> <br>
+				<input id="username" name="username" type="text"  required="required"> <br> <br>
+				<b> Email <font color="red"> * </font></b> <br> <br>
+				<input type="text"  required="required" id="email" name="email" > <br> <br>
+				<b> Message  </b> <br> <br>
+				<textarea  id="message" name='message'> </textarea> <br>
+				
+			</div>
+			<div class="submit">
+				<input type="submit" name="btn" value="Submit">
+			</div>
+		 </form> <br> <br>
+		 <div id="success"></div>
+		 <a  href="#top" > <img src="images.png" width="50px" height="50px" align="right" style="margin-right:50px; ">  </a>
+
+		 <script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+
+
+  $("form#data").submit(function(){
+
+var formData = new FormData($(this)[0]);
+
+    $.ajax({
+        url: 'sent.php',
+        type: 'POST',
+        data: formData,
+        async: false,
+        success: function (data) {
+        $('#success').html(data);
+ },
+        cache: false,
+        contentType: false,
+        processData: false
+
+    });
+    $(this).closest('form').find("input[type=text], textarea, input[type=file], input[type=email] ").val("");
+   return false;
+}); 
+</script>
+	</body>
+</html>
